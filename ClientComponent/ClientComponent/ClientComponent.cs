@@ -20,7 +20,7 @@ public class ClientComponent : IClientComponent
 
     public async Task<KeyValuePair?> Get(string key)
     {
-        using var response = await _httpClient.GetAsync($"{_baseUrl}/get?key={key}");
+        using var response = await _httpClient.GetAsync($"{_baseUrl}get/keys/{key}");
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadFromJsonAsync<KeyValuePair>();
         return responseBody;
